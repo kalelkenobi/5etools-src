@@ -146,6 +146,11 @@ jobs:
          registry: ghcr.io
          username: ${{ github.actor }}
          password: ${{ secrets.GITHUB_TOKEN }}
+         
+     - name: Authenticate and pre-pull base image
+       run: |
+         docker pull ${BASE_IMAGE}
+       continue-on-error: true
 
      - name: Generate Docker metadata
        id: meta
