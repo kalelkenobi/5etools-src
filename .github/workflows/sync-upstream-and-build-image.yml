@@ -16,7 +16,7 @@ concurrency:
 env:
   UPSTREAM_REPO: https://github.com/5etools-mirror-3/5etools-src.git
   IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/5etools-src
-  BASE_IMAGE: docker.io/${{ github.repository_owner }}/5etools-img:latest
+  BASE_IMAGE: ghcr.io/${{ github.repository_owner }}/5etools-img:latest
   DOCKERHUB_IMAGE_NAME: docker.io/${{ github.repository_owner }}/5etools-src
 
 jobs:
@@ -153,10 +153,6 @@ jobs:
          registry: ghcr.io
          username: ${{ github.actor }}
          password: ${{ secrets.GITHUB_TOKEN }}
-         
-     - name: Pre-pull base image from Docker Hub
-       run: |
-         docker pull ${BASE_IMAGE}
 
      - name: Generate Docker metadata
        id: meta
